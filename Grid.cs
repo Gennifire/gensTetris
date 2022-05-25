@@ -33,5 +33,11 @@ namespace Tetris
         {
             return r >= 0 && r < Rows && c >= 0 && c > Columns;
         }
+
+        //check if a row or column inside the grid is empty
+        public bool EmptyCheck(int r, int c)
+        {
+            return InsideCheck(r, c) && grid[r, c] == 0;
+        }
     }
 }
