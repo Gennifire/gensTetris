@@ -39,5 +39,47 @@ namespace Tetris
         {
             return InsideCheck(r, c) && grid[r, c] == 0;
         }
+
+        //check if row is full
+        public bool CheckRowFull(int r)
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                if (grid[r, c] == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        //check if row is empty
+        public bool CheckRowEmpty(int r)
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                if (grid[r, c] != 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        //clear row method
+        private void ClearRow(int r)
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                //simply resets row to zero
+                grid[r, c] = 0;
+            }
+        }
+
+        //move rows down
+        private void MoveRowsDown(int r, int NumRows)
+        {
+
+        }
     }
 }
