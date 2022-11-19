@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Tetris.BlockFiles.tilePieces
 {
-    class TBlock
+    class TBlock : Block
     {
+        public override int id => 6;
+
+        protected override BlockPosition StartOffSet => new(0, 3);
+
+        protected override BlockPosition[][] Tiles => new BlockPosition[][] {
+            new BlockPosition[] {new(0,1), new(1,0), new(1,1), new(1,2)},
+            new BlockPosition[] {new(0,1), new(1,1), new(1,2), new(2,1)},
+            new BlockPosition[] {new(1,0), new(1,1), new(1,2), new(2,1)},
+            new BlockPosition[] {new(0,1), new(1,0), new(1,1), new(2,1)}
+        };
     }
 }
