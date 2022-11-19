@@ -28,7 +28,7 @@ namespace Tetris
             grid = new int[rows, columns];
         }
 
-        //Check if  the row and column are inside the grid
+        //Check if the row and column are inside the grid
         public bool InsideCheck(int r, int c)
         {
             return r >= 0 && r < Rows && c >= 0 && c > Columns;
