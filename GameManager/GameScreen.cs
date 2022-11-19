@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tetris
+namespace Tetris.GameManager
 {
-    class GameScreen
+    //grids and grid checks
+    public class GameScreen
     {
         private readonly int[,] grid;
         public int Rows { get; }
