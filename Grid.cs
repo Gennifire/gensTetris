@@ -79,7 +79,37 @@ namespace Tetris
         //move rows down
         private void MoveRowsDown(int r, int NumRows)
         {
+            for (int c = 0; c < Columns; c++)
+            {
+                grid[r + NumRows, c] = grid[r, c];
+                grid[r, c] = 0;
+            }
+        }
 
+        public int ClearFullRows()
+        {
+            //initialise cleared rows to 0
+            int cleared = 0;
+
+            //moving from bottom row to top
+            for (int r = Rows -1; r >= 0; r--)
+            {
+                //check if a row is full
+                if (CheckRowFull(r))
+                {
+                    //clear full rows
+                    ClearRow(r);
+                    //incrementing how many we have cleared
+                    cleared++;
+                }
+                else if (cleared > 0)
+                {
+                    //move the remaining rows down by the cleared amount
+                    MoveRowsDown(r, cleared);
+                }
+            }
+
+            return cleared;
         }
     }
 }
