@@ -107,9 +107,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resources\959001-hail-satan-wallpaper-3000x2000-for-android-50.jpg" />
+    <Resource Include="Resources\hail.jpg" />
     <Resource Include="Resources\Background.png" />
     <Resource Include="Resources\Block-Empty.png" />
     <Resource Include="Resources\Block-I.png" />
