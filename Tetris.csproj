@@ -108,5 +108,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\959001-hail-satan-wallpaper-3000x2000-for-android-50.jpg" />
+    <Resource Include="Resources\Background.png" />
+    <Resource Include="Resources\Block-Empty.png" />
+    <Resource Include="Resources\Block-I.png" />
+    <Resource Include="Resources\Block-J.png" />
+    <Resource Include="Resources\Block-L.png" />
+    <Resource Include="Resources\Block-O.png" />
+    <Resource Include="Resources\Block-S.png" />
+    <Resource Include="Resources\Block-T.png" />
+    <Resource Include="Resources\Block-Z.png" />
+    <Resource Include="Resources\TileBlue.png" />
+    <Resource Include="Resources\TileCyan.png" />
+    <Resource Include="Resources\TileEmpty.png" />
+    <Resource Include="Resources\TileGreen.png" />
+    <Resource Include="Resources\TileOrange.png" />
+    <Resource Include="Resources\TilePurple.png" />
+    <Resource Include="Resources\TileRed.png" />
+    <Resource Include="Resources\TileYellow.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
