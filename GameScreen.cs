@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-    class Grid
+    class GameScreen
     {
         private readonly int[,] grid;
-
         public int Rows { get; }
         public int Columns { get; }
 
@@ -21,7 +20,7 @@ namespace Tetris
         }
 
         //
-        public Grid(int rows, int columns)
+        public GameScreen(int rows, int columns)
         {
             Rows = rows;
             Columns = columns;
