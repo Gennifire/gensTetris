@@ -65,6 +65,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BlockFiles\Block.cs" />
+    <Compile Include="BlockFiles\BlockQueue.cs" />
     <Compile Include="BlockFiles\tilePieces\SBlock.cs" />
     <Compile Include="BlockFiles\tilePieces\IBlock.cs" />
     <Compile Include="BlockFiles\tilePieces\JBlock.cs" />
