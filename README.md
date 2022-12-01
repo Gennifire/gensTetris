@@ -1,6 +1,16 @@
 # Tetris
 
-Quick tetris game to practice working with grids and
+Quick tetris game to practice working with grids and matrixes
+Drawing images in grids.
+
+
+![tetrisLvl1](https://user-images.githubusercontent.com/72698786/205048982-61528e03-6513-46ad-a724-3466b293c19f.png)
+
+
+
+
+
+
 
 //BLock Grid Guide
 //
