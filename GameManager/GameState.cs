@@ -19,12 +19,27 @@ namespace Tetris.GameManager
             {
                 currentBlock = value;
                 currentBlock.Reset();
+
+                for (int i = 0; i < 2; i++)
+                {
+                    currentBlock.MoveState(1, 0);
+
+                    if (!BlockFitCheck())
+                    {
+                        currentBlock.MoveState(-1, 0);
+                    }
+                }
             }
         }
 
         public GameScreen gameScreen { get; }
         public BlockQueue blockQueue { get; }
+        public Block heldBlock { get; private set; }
+        public bool canHold { get; private set; }
+        public int score { get; private set; }
+
         public bool gameOver { get; private set; }
+
 
         public GameState()
         {
@@ -34,11 +49,12 @@ namespace Tetris.GameManager
             blockQueue = new BlockQueue();
             //use block queue to get current block
             currentBlock = blockQueue.GetandUpdate();
+            canHold = true;
         }
 
         private bool BlockFitCheck()
         {
-            foreach (BlockPosition block in currentBlock.blockPositions())
+            foreach (BlockPosition block in currentBlock.BlockPositions())
             {
                 //if any blocks are outside the grid or overlapping another tile
                 if (!gameScreen.EmptyCheck(block.Row, block.Column))
@@ -92,7 +108,29 @@ namespace Tetris.GameManager
             }
         }
 
-        
+        public void HoldBlock()
+        {
+            if (!canHold)
+            {
+                return;
+            }
+
+            if (heldBlock == null)
+            {
+                heldBlock = CurrentBlock;
+                CurrentBlock = blockQueue.GetandUpdate();
+            }
+            else //swap current to held & vis versa
+            {
+                Block tmp = CurrentBlock;
+                CurrentBlock = heldBlock;
+                heldBlock = tmp;
+            }
+
+            canHold = false;
+        }
+
+
         private bool GameOverCheck()
         {
             //if either of the top offset rows are not empty, game is over
@@ -102,14 +140,14 @@ namespace Tetris.GameManager
         private void PutBlock()
         {
             //loop over tile position of current block
-            foreach(BlockPosition block in currentBlock.blockPositions())
+            foreach(BlockPosition block in currentBlock.BlockPositions())
             {
                 //sets position within the grid to the current block id
                 gameScreen[block.Row, block.Column] = currentBlock.id;
             }
 
             //if any rows are full, clear them
-            gameScreen.ClearFullRows();
+            score += gameScreen.ClearFullRows();
 
             //check if game is over
             if (GameOverCheck())
@@ -120,6 +158,7 @@ namespace Tetris.GameManager
             {
                 //if game not over update current block
                 currentBlock = blockQueue.GetandUpdate();
+                canHold = true;
             }
         }
 
@@ -130,9 +169,39 @@ namespace Tetris.GameManager
             if (!BlockFitCheck())
             {
                 currentBlock.MoveState(-1, 0);
-                //calls put block incase block cannot be moved down
+                //calls put block in case block cannot be moved down
                 PutBlock();
             }
+        }
+
+        private int TileDropDistance(BlockPosition block)
+        {
+            int drop = 0;
+
+            while (gameScreen.EmptyCheck(block.Row + drop + 1, block.Column))
+            {
+                drop++;
+            }
+
+            return drop;
+        }
+
+        public int BlockDropDistance()
+        {
+            int drop = gameScreen.Rows;
+
+            foreach (BlockPosition block in currentBlock.BlockPositions())
+            {
+                drop = Math.Min(drop, TileDropDistance(block));
+            }
+
+            return drop;
+        }
+
+        public void DropBlock()
+        {
+            CurrentBlock.MoveState(BlockDropDistance(), 0);
+            PutBlock();
         }
     }
 }

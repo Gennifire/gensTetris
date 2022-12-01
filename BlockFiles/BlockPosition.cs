@@ -16,7 +16,6 @@ namespace Tetris
             this.Row = row;
         }
 
-            
 
     }
 }

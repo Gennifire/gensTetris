@@ -12,7 +12,7 @@ namespace Tetris
         protected abstract BlockPosition[][]  Tiles{ get; }
         //start offset to decide where tile spawns within the grid
         protected abstract BlockPosition StartOffSet { get; }
-        //id to dstinguish blocks
+        //id to distinguish blocks
         public abstract int id { get; }
 
         //store current rotation state
@@ -28,7 +28,7 @@ namespace Tetris
         }
 
         //returns current position of the blocks factoring in current rotation & offset
-        public IEnumerable<BlockPosition> blockPositions()
+        public IEnumerable<BlockPosition> BlockPositions()
         {
             foreach (BlockPosition block in Tiles[rotationState])
             {
@@ -63,8 +63,8 @@ namespace Tetris
         public void Reset()
         {
             rotationState = 0;
-            offSet.Column = StartOffSet.Column;
             offSet.Row = StartOffSet.Row;
+            offSet.Column = StartOffSet.Column;
         }
 
     }
